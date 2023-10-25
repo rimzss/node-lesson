@@ -31,3 +31,5 @@ const f = fs.readFile("test.txt", { encoding: "utf8" }, (err, data) => {
   //   });
   //   console.log("ONLY LETTERS NUMBER", letterCount);
 });
+
+const b = fs.appendFile("");
