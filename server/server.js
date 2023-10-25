@@ -30,11 +30,15 @@ app.post("/api/users", (req, res) => {
 // PUT
 app.put("/api/users/:id", (req, res) => {
   const { id } = req.params;
+  const update = { ...req.body };
   const { users } = JSON.parse(
     fs.readFileSync("users.json", { encoding: "utf-8" })
   );
   const index = users.findIndex((el) => el.id === id);
-  users[index].name = "Bold";
+  users[index].name = update.name;
+  users[index].status = update.status;
+  users[index].email = update.email;
+  users[index].department = update.department;
   fs.writeFileSync("users.json", JSON.stringify({ users }), {
     encoding: "utf-8",
   });
