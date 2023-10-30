@@ -1,11 +1,10 @@
 const { v4: uuidv4 } = require("uuid");
 const fs = require("fs");
+const { readFile } = require("../utils/fileHandler");
 
 const getAllUser = (req, res) => {
   console.log("Get all users");
-  const { users } = JSON.parse(
-    fs.readFileSync("users.json", { encoding: "utf-8" })
-  );
+  const users = readFile("users.json");
   res.status(200).json({ message: "success", users });
 };
 
